@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice game in javascript</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+
+<div class="bg-black text-white text-center h-screen">
+
+    <h2 class="py-4 text-4xl" id="res">Let's play</h2>
+
+    <!-- Turn player Count -->
+    <h3 class="text-2xl mb-3" id="turn">
+        Turn : 0 / 25
+    </h3>
+
+    <div class="flex justify-center">
+
+        <div class="w-1/4">
+            <p id="name1">Player 1 Name</p>
+
+            <img src="./dice1.png" alt="" id="image1">
+
+            <h2 class="text-2xl mt-3">
+                Score :
+                <span id="score1">0</span>
+            </h2>
+        </div>
+
+        <div class="w-1/4">
+            <p id="name2">Player 2 Name</p>
+
+            <img src="./dice2.png" alt="" id="image2">
+
+            <h2 class="text-2xl mt-3">
+                Score :
+                <span id="score2">0</span>
+            </h2>
+        </div>
+
+    </div>
+
+    <button id="btn" class="px-5 py-2 rounded bg-green-300 text-black mt-5" onclick="dice()">
+        Roll the dice
+    </button>
+
+    <button class="px-5 py-2 rounded bg-green-500 text-black hover:bg-transparent hover:border-green-600 hover:text-white 
+        hover:border transition-all duration-500 cursor-pointer" onclick="editname()">Edit the Name
+    </button>
+
+</div>
+
+<script>
+
+    // Global Variables
+    let player1Score = 0;
+    let player2Score = 0;
+    let turn = 0;
+
+    function dice(){
+
+        // Stop after 25 turns
+        if(turn >= 25){
+            return;
+        }
+
+        // Turn increase
+        turn++;
+
+        // Random dice
+        let player1 = Math.floor(Math.random()*6)+1;
+        let player2 = Math.floor(Math.random()*6)+1;
+
+        // Images
+        let image1 = document.getElementById("image1");
+        let image2 = document.getElementById("image2");
+
+        image1.src = 'dice'+player1+".png";
+        image2.src = 'dice'+player2+".png";
+
+        // Add Scores
+        player1Score += player1;
+        player2Score += player2;
+
+        // Update score on screen
+        document.getElementById("score1").innerHTML = player1Score;
+
+        document.getElementById("score2").innerHTML = player2Score;
+
+        // Update turn
+        document.getElementById("turn").innerHTML =
+        "Turn : " + turn + " / 25";
+
+        
+        let res = document.getElementById("res");
+        // Temporary round result
+        if(player1 > player2){
+            res.innerHTML = "Player 1 wins this round";
+        }
+
+        else if(player2 > player1){
+            res.innerHTML = "Player 2 wins this round";
+        }
+
+        else{
+            res.innerHTML = "Match Draw";
+        }
+
+        // Final Winner after 25 turns
+        if(turn == 25){
+
+            if(player1Score > player2Score){
+                res.innerHTML = "Player 1 Wins the Game";
+            }
+
+            else if(player2Score > player1Score){
+                res.innerHTML = "Player 2 Wins the Game";
+            }
+
+            else{
+                res.innerHTML = "Game Draw";
+            }
+
+            // Disable button
+            document.getElementById("btn").disabled = true;
+        }
+
+    }
+
+    //Edit players name function
+    function editname(){
+
+        let name1 = prompt("Enter player 1 name");
+        let name2 = prompt("Enter player 2 name");
+
+        document.getElementById("name1").innerHTML = name1;
+
+        document.getElementById("name2").innerHTML = name2;
+
+    }
+
+</script>
+
+</body>
+</html>

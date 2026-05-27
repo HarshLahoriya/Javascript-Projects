@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock in Javascript</title>
+    <style>
+        *{
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           font-family: sans-serif; 
+        }
+
+        body{
+            height: 100vh;
+            background: #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clock{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0b0b0b;
+            height: 150px;
+            width: 580px;
+            border-radius: 18px;
+            border: 1px solid #ffd700;
+            box-shadow: 5px 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .time-box{
+                width: 110px;
+                text-align: center;
+        }
+
+        .time-box span{
+                    display: block;
+                    font-size: 60px;
+                    font-weight: 700;
+                    color: #ffd700;
+                    font-family: sans-serif;
+        }
+
+        .time-box p{
+                font-size: 11px;
+                letter-spacing: 2px;
+                color: #777;
+                display: block;
+        }
+
+        .divider{
+                 width: 2px;
+                 height: 70px;
+                 background: linear-gradient(180deg, #0000, #ffd700, transparent);
+                 margin: 0 2px;
+        }
+
+        .ampm{
+            padding: 8px 14px;
+            border-radius: 8px;
+            background: #111;
+            color: #ffd700;
+            font-size: 14px;
+            border: 0.5px solid #ffd700;
+            margin-left: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="time-box">
+            <span id="hour">00</span>
+            <p>HOUR</p>
+        </div>
+
+        <div class="divider"></div>
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <p>MINUTES</p>
+        </div>
+
+        <div class="divider"></div>
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <p>SECONDS</p>
+        </div>
+
+        <div class="ampm" id="ampm">AM</div>
+    </div>
+
+    <script>
+    function time(){
+        let hour = document.getElementById('hour')
+        let minutes = document.getElementById('minutes')
+        let seconds = document.getElementById('seconds')
+        let ampm = document.getElementById('ampm')
+
+        let h = new Date().getHours()
+        let m = new Date().getMinutes()
+        let s = new Date().getSeconds()
+
+        let periods = h >= 12? "PM":"AM" 
+
+        if(h>12){
+            h = h-12
+        }
+
+        h = (h<10)?"0"+h:h
+        m = (m<10)?"0"+m:m
+        s = (s<10)?"0"+s:s
+
+        hour.innerHTML = h
+        minutes.innerHTML = m
+        seconds.innerHTML = s
+        ampm.innerHTML = periods
+    }
+
+    setInterval(time, 1000)
+    </script>
+</body>
+</html>
