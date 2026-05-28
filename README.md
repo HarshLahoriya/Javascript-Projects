@@ -1,7 +1,14 @@
 # Javascript-Projects
-this is a my projects in html, css &amp; javascript
-![Analog Clock](images/Analog clock ss.png)
-![Animated Car](images/Animated car ss.png)
-![Digital Clock](images/Digital clock ss.png)
-![Dice game](images/Dicegame ss.png)
+
+## Analog Clock
+![Analog Clock](images/analog-clock.png)
+
+## Animated Car
+![Animated Car](images/animated-car.png)
+
+## Digital Clock
+![Digital Clock](images/digital-clock.png)
+
+## Dice Game
+![Dice Game](images/dicegame.png)
 
