@@ -1,14 +1,14 @@
 # Javascript-Projects
 
 ## Analog Clock
-![Analog Clock](images/analog-clock.png)
+![Analog Clock](images/Analog-clock.png)
 
 ## Animated Car
-![Animated Car](images/animated-car.png)
+![Animated Car](images/Animated-car.png)
 
 ## Digital Clock
-![Digital Clock](images/digital-clock.png)
+![Digital Clock](images/Digital-clock.png)
 
 ## Dice Game
-![Dice Game](images/dicegame.png)
+![Dice Game](images/Dice-game.png)
 
